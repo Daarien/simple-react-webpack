@@ -1,0 +1,79 @@
+html {
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  height: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  overflow-y: scroll;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  header {
+    padding: 1rem;
+    .container {
+      display: flex;
+      align-items: center;
+      img {
+        margin-right: 1rem;
+        animation: header-logo-spin infinite 20s linear;
+        height: 3rem;
+        pointer-events: none;
+      }
+      @keyframes header-logo-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      h1 {
+        color: darkmagenta;
+        font-size: 1.7rem;
+        margin: 0 4rem 0 0;
+      }
+      nav {
+        span {
+          margin-right: 1.5rem;
+          border: 1px solid transparent;
+          border-radius: 4px;
+          padding: 3px 10px;
+          transition: 300ms;
+          &:hover {
+            cursor: pointer;
+            color: brown;
+            border-color: brown;
+          }
+          &.active {
+            color: brown;
+            border-color: brown;
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    flex-grow: 1;
+  }
+
+  footer {
+    padding: 1rem;
+    .container {
+      display: flex;
+      justify-content: center;
+      span {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: darkolivegreen;
+      }
+    }
+  }
+}
