@@ -14,18 +14,18 @@ export default class Dogs extends React.Component {
   componentDidMount = () => this.showDog();
 
   showDog = () => {
-    this.setState({ loading: true });
-    try {
-      take("https://dog.ceo/api/breeds/image/random").then(data => {
-        if (data.status === "success") {
-          this.setState({ url: data.message });
-        }
-      });
-    } catch (error) {
-      showError("getting dog failed", error);
-    } finally {
-      setTimeout(() => this.setState({ loading: false }), 500);
-    }
+    this.setState({ loading: true }, () => {
+      try {
+        take("https://dog.ceo/api/breeds/image/random").then(data => {
+          if (data.status === "success") {
+            this.setState({ url: data.message, loading: false });
+          }
+        });
+      } catch (error) {
+        showError("getting dog failed", error);
+        this.setState({ loading: false });
+      }
+    });
   };
 
   render() {
