@@ -16,3 +16,13 @@
     width: 110px;
   }
 }
+
+#counter-buttons-page {
+  display: flex;
+  section {
+    text-align: center;
+    button {
+      margin: 0 8px;
+    }
+  }
+}

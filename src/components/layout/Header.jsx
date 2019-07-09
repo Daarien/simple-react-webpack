@@ -4,6 +4,12 @@ import logo from "../../assets/img/logo.svg";
 import Context from "../Context";
 import classnames from "classnames";
 
+const routes = [
+  { route: "counter", title: "Counter" },
+  { route: "count-buttons", title: "Count buttons" },
+  { route: "dogs", title: "Sobaken" }
+];
+
 export default function Header() {
   const context = useContext(Context);
   const { page, changePage } = context;
@@ -18,20 +24,15 @@ export default function Header() {
         <img src={logo} alt="Logo image" />
         <h1>React project</h1>
         <nav>
-          <span
-            data-page="counter"
-            className={classnames({ active: page === "counter" })}
-            onClick={handleChangePage}
-          >
-            Counter
-          </span>
-          <span
-            data-page="dogs"
-            className={classnames({ active: page === "dogs" })}
-            onClick={handleChangePage}
-          >
-            Dogs
-          </span>
+          {routes.map(item => (
+            <span
+              data-page={item.route}
+              className={classnames({ active: page === item.route })}
+              onClick={handleChangePage}
+            >
+              {item.title}
+            </span>
+          ))}
         </nav>
       </Container>
       <hr />
