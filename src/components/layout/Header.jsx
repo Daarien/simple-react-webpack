@@ -7,7 +7,8 @@ import classnames from "classnames";
 const routes = [
   { route: "counter", title: "Counter" },
   { route: "count-buttons", title: "Count buttons" },
-  { route: "dogs", title: "Sobaken" }
+  { route: "dogs", title: "Sobaken" },
+  { route: "database", title: "Book database" }
 ];
 
 export default function Header() {
@@ -26,6 +27,7 @@ export default function Header() {
         <nav>
           {routes.map(item => (
             <span
+              key={item.route}
               data-page={item.route}
               className={classnames({ active: page === item.route })}
               onClick={handleChangePage}

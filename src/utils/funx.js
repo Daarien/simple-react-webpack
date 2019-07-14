@@ -1,5 +1,5 @@
-export function take(url) {
-  return fetch(url)
+export function take(url, params) {
+  return fetch(url, params)
     .then(response => response.json())
     .catch(error => console.error(error));
 }
