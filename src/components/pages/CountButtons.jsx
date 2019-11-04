@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default () => {
   // set of buttons' titles
   const buttons = ["btn1", "btn2"];
   // initial state using buttons' titles
   const initState = buttons.reduce((state, btn) => {
-    state[btn] = 0;
-    return state;
+    return { ...state, [btn]: 0 };
   }, {});
   // state for buttons' counters
-  const [state, setState] = React.useState(initState);
+  const [state, setState] = useState(initState);
 
   const handleClick = event => {
     event.stopPropagation();
@@ -22,16 +21,18 @@ export default () => {
   return (
     <div id="counter-buttons-page">
       {buttons.map(btn => (
-        <section>
+        <section key={btn}>
           <p>{state[btn]}</p>
-          <button id={btn} onClick={handleClick}>
+          <button type="button" id={btn} onClick={handleClick}>
             {btn}
           </button>
         </section>
       ))}
       <section>
         <p>-</p>
-        <button onClick={handleReset}>reset counts</button>
+        <button type="button" onClick={handleReset}>
+          reset counts
+        </button>
       </section>
     </div>
   );
