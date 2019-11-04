@@ -22,7 +22,10 @@ class Counter extends React.Component {
     const { count } = this.state;
     return (
       <div id="counter-page">
-        <p>Count: {count}</p>
+        <p>
+          Count:&nbsp;
+          {count}
+        </p>
         <Button variant="info" onClick={this.handlePlus}>
           count + 1
         </Button>

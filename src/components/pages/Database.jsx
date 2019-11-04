@@ -27,12 +27,15 @@ const defaultUserInput = {
 };
 
 export default class Database extends React.PureComponent {
-  state = {
-    mode: "add",
-    userInput: defaultUserInput,
-    status: status.none,
-    data: []
-  };
+  constructor() {
+    super();
+    this.state = {
+      mode: "add",
+      userInput: defaultUserInput,
+      status: status.none,
+      data: []
+    };
+  }
 
   static getDerivedStateFromProps(props, state) {
     if (state.status === status.success) {
@@ -40,6 +43,7 @@ export default class Database extends React.PureComponent {
         userInput: defaultUserInput
       };
     }
+    return null;
   }
 
   componentDidMount() {
@@ -55,7 +59,12 @@ export default class Database extends React.PureComponent {
     }
   }
 
-  getData = () => take(api).then(data => this.setState({ data }));
+  getData = async () => {
+    const data = await take(api);
+    if (data) {
+      this.setState({ data });
+    }
+  };
 
   handleInput = event => {
     const { name, value } = event.target;
